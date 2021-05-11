@@ -3,10 +3,8 @@
 .FeedMain {
   @extend %center;
   width: 100%;
-  margin-top: 70px;
+
   .loginBtn {
-    top: 120px;
-    left: 390px;
     width: 235px;
     height: 60px;
     margin-right: 40px;
@@ -14,23 +12,26 @@
     border: none;
     border-radius: 5px;
     color: #ffffff;
-    font: normal normal bold 22px/25px SpoqaHanSans;
+    font: normal normal bold 22px SpoqaHanSans;
     opacity: 1;
     cursor: pointer;
   }
+
   .Feed {
     .orderBtn {
       display: flex;
       justify-content: space-between;
       width: 865px;
-      margin: -20px 0 10px 0;
+      margin: 0 0 10px 0;
       span {
         cursor: pointer;
       }
+
       .active {
         color: $themeColor;
       }
     }
+
     .filterBtn {
       width: 48px;
       height: 24px;
@@ -39,6 +40,55 @@
       color: #adb5bd;
       border-radius: 3px;
       border-color: #e1e4e7;
+    }
+
+    .feedCard {
+      padding: 24px 30px;
+      width: 865px;
+      height: 179px;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 1px solid #e1e4e7;
+      border-radius: 5px;
+
+      .cardHeader {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      .underBar {
+        width: 805px;
+        height: 1px;
+        background: #e1e4e7 0% 0% no-repeat padding-box;
+      }
+
+      .userContent {
+        display: flex;
+        font-size: 13px;
+        margin: 10px 0;
+
+        .userId {
+          color: $themeColor;
+        }
+
+        .verticalBar {
+          width: 1px;
+          height: 15px;
+          background: #e1e4e7 0% 0% no-repeat padding-box;
+        }
+      }
+
+      h1 {
+        width: 799px;
+        height: 27px;
+        font-size: 18px;
+      }
+
+      p {
+        width: 802px;
+        height: 24px;
+      }
     }
   }
 }

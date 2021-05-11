@@ -4,7 +4,9 @@ import "./Feed.scss";
 const Feed = () => {
   return (
     <div className="FeedMain">
-      <button className="loginBtn">로그인</button>
+      <aside>
+        <button className="loginBtn">로그인</button>
+      </aside>
       <div className="Feed">
         <div className="orderBtn">
           <div>
@@ -13,6 +15,22 @@ const Feed = () => {
           </div>
           <button className="filterBtn">필터</button>
         </div>
+        <article className="feedCard">
+          <div className="cardHeader">
+            <div className="categoryName">카테고리 이름</div>
+            <div className="categoryId">id</div>
+          </div>
+          <div className="underBar"></div>
+          <div className="userContent">
+            <div className="userId">userId &nbsp;</div>
+            <div className="verticalBar"></div>
+            <div className="createDay">&nbsp; 2021-05-11</div>
+          </div>
+          <h1>TitleTitleTitleTitleTitle</h1>
+          <p>
+            ContentContentContentContentContentContentContentContentContentContentContentContent
+          </p>
+        </article>
       </div>
     </div>
   );
