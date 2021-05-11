@@ -1,0 +1,44 @@
+@import "../../styles/common.scss";
+
+.FeedMain {
+  @extend %center;
+  width: 100%;
+  margin-top: 70px;
+  .loginBtn {
+    top: 120px;
+    left: 390px;
+    width: 235px;
+    height: 60px;
+    margin-right: 40px;
+    background: $themeColor 0% 0% no-repeat padding-box;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font: normal normal bold 22px/25px SpoqaHanSans;
+    opacity: 1;
+    cursor: pointer;
+  }
+  .Feed {
+    .orderBtn {
+      display: flex;
+      justify-content: space-between;
+      width: 865px;
+      margin: -20px 0 10px 0;
+      span {
+        cursor: pointer;
+      }
+      .active {
+        color: $themeColor;
+      }
+    }
+    .filterBtn {
+      width: 48px;
+      height: 24px;
+      border: none;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      color: #adb5bd;
+      border-radius: 3px;
+      border-color: #e1e4e7;
+    }
+  }
+}
