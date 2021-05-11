@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFeedListData } from "../../store/modules/feedList";
 import "./Feed.scss";
 
 const Feed = () => {
+  const { feedList, loading } = useSelector((state) => state.feedList);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getFeedListData());
+  }, []);
+
   return (
     <div className="FeedMain">
       <aside>
