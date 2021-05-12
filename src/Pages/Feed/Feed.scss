@@ -1,27 +1,36 @@
 @import "../../styles/common.scss";
 
 .FeedMain {
-  @extend %center;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-left: 20px;
   width: 100%;
+  max-width: 1024px;
 
-  .loginBtn {
-    width: 235px;
-    height: 60px;
-    margin-right: 40px;
-    background: $themeColor 0% 0% no-repeat padding-box;
-    border: none;
-    border-radius: 5px;
-    color: #ffffff;
-    font: normal normal bold 22px SpoqaHanSans;
-    opacity: 1;
-    cursor: pointer;
+  aside {
+    .loginBtn {
+      width: 20vw;
+      max-width: 235px;
+      height: 60px;
+      margin-right: 40px;
+      background: $themeColor 0% 0% no-repeat padding-box;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      font: normal normal bold 22px SpoqaHanSans;
+      cursor: pointer;
+    }
   }
 
   .Feed {
+    margin-top: 5px;
+
     .orderBtn {
       display: flex;
       justify-content: space-between;
-      width: 865px;
+      width: 100%;
+      max-width: 865px;
       margin: 0 0 10px 0;
       span {
         cursor: pointer;
@@ -40,12 +49,14 @@
       color: #adb5bd;
       border-radius: 3px;
       border-color: #e1e4e7;
+      cursor: pointer;
     }
 
     .feedCard {
       margin-bottom: 28px;
       padding: 24px 30px;
-      width: 865px;
+      width: 70vw;
+      max-width: 865px;
       height: 179px;
       background: #ffffff 0% 0% no-repeat padding-box;
       border: 1px solid #e1e4e7;
@@ -59,7 +70,8 @@
       }
 
       .underBar {
-        width: 805px;
+        width: 65vw;
+        max-width: 805px;
         height: 1px;
         background: #e1e4e7 0% 0% no-repeat padding-box;
       }
@@ -81,19 +93,20 @@
       }
 
       h1 {
-        width: 799px;
         height: 27px;
         font-size: 18px;
       }
 
       p {
-        width: 802px;
         height: 24px;
+        word-wrap: break-word;
       }
     }
+
     .adsCard {
       padding: 24px 30px;
-      width: 865px;
+      width: 70vw;
+      max-width: 865px;
       height: 255px;
       background: #ffffff 0% 0% no-repeat padding-box;
       border: 1px solid #e1e4e7;
@@ -108,7 +121,8 @@
         margin-top: 16px;
 
         .adsImg {
-          width: 310px;
+          margin-right: 30px;
+          min-width: 160px;
           height: 179px;
           img {
             width: 100%;
@@ -117,14 +131,20 @@
         }
 
         .adsText {
-          margin: 10px 0 0 30px;
-          width: 465px;
+          margin: 10px 0 0 0px;
+          width: 50vw;
+          max-width: 465px;
           word-wrap: break-word;
 
           h1 {
             margin-bottom: 7px;
             font-size: 18px;
             font-weight: bold;
+          }
+
+          p {
+            height: 24px;
+            word-wrap: break-word;
           }
         }
       }
