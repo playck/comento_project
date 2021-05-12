@@ -43,6 +43,7 @@
     }
 
     .feedCard {
+      margin-bottom: 28px;
       padding: 24px 30px;
       width: 865px;
       height: 179px;
@@ -88,6 +89,44 @@
       p {
         width: 802px;
         height: 24px;
+      }
+    }
+    .adsCard {
+      padding: 24px 30px;
+      width: 865px;
+      height: 255px;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 1px solid #e1e4e7;
+      border-radius: 5px;
+
+      .sponserName {
+        font-size: 13px;
+      }
+
+      .adsContent {
+        display: flex;
+        margin-top: 16px;
+
+        .adsImg {
+          width: 310px;
+          height: 179px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .adsText {
+          margin: 10px 0 0 30px;
+          width: 465px;
+          word-wrap: break-word;
+
+          h1 {
+            margin-bottom: 7px;
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
       }
     }
   }

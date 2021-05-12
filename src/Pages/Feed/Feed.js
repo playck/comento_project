@@ -24,6 +24,7 @@ const Feed = () => {
           </div>
           <button className="filterBtn">필터</button>
         </div>
+
         <article className="feedCard">
           <div className="cardHeader">
             <div className="categoryName">카테고리 이름</div>
@@ -39,6 +40,26 @@ const Feed = () => {
           <p>
             ContentContentContentContentContentContentContentContentContentContentContentContent
           </p>
+        </article>
+
+        <article className="adsCard">
+          <div className="cardHeader">
+            <div className="sponserName">광고이름</div>
+          </div>
+          <div className="adsContent">
+            <div className="adsImg">
+              <img
+                alt="광고사진"
+                src="https://media.vlpt.us/images/playck/post/f04cee49-7383-4854-811e-ed5bc9525ef0/js.png"
+              />
+            </div>
+            <div className="adsText">
+              <h1>TitleTitleTitleTitleTitle</h1>
+              <p>
+                ContentContentContentContentContentContentContentContentContentContentContentContent
+              </p>
+            </div>
+          </div>
         </article>
       </div>
     </div>
