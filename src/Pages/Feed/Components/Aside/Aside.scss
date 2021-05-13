@@ -1,0 +1,16 @@
+@import "../../../../styles/common.scss";
+
+aside {
+  .loginBtn {
+    width: 20vw;
+    max-width: 235px;
+    height: 60px;
+    margin-right: 40px;
+    background: $themeColor 0% 0% no-repeat padding-box;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font: normal normal bold 22px SpoqaHanSans;
+    cursor: pointer;
+  }
+}

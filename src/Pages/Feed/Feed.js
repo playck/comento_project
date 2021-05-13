@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAdsListData, getFeedListData } from "../../store/modules/feedList";
+import Aside from "./Components/Aside/Aside";
 import Modal from "./Components/Modal/Modal";
 import "./Feed.scss";
 
@@ -22,9 +23,7 @@ const Feed = () => {
 
   return (
     <div className="FeedMain">
-      <aside>
-        <button className="loginBtn">로그인</button>
-      </aside>
+      <Aside />
       <div className="Feed">
         <div className="orderBtn">
           <div>
