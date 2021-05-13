@@ -57,7 +57,6 @@
       padding: 24px 30px;
       width: 70vw;
       max-width: 865px;
-      height: 179px;
       background: #ffffff 0% 0% no-repeat padding-box;
       border: 1px solid #e1e4e7;
       border-radius: 5px;
@@ -93,17 +92,17 @@
       }
 
       h1 {
-        height: 27px;
+        margin-bottom: 6px;
         font-size: 18px;
       }
 
       p {
-        height: 24px;
         word-wrap: break-word;
       }
     }
 
     .adsCard {
+      margin-bottom: 28px;
       padding: 24px 30px;
       width: 70vw;
       max-width: 865px;

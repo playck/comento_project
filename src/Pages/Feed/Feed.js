@@ -7,10 +7,12 @@ import "./Feed.scss";
 const Feed = () => {
   const { feedList, loading } = useSelector((state) => state.feedList);
   const [flg, setFlg] = useState(false);
+  const [data, setData] = useState("");
+  const [arr, setArr] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getFeedListData());
+    dispatch(getFeedListData(1, "asc", arr, 10));
   }, []);
 
   const handleModal = () => {
@@ -33,42 +35,60 @@ const Feed = () => {
           </button>
         </div>
 
-        <article className="feedCard">
-          <div className="cardHeader">
-            <div className="categoryName">카테고리 이름</div>
-            <div className="categoryId">id</div>
-          </div>
-          <div className="underBar"></div>
-          <div className="userContent">
-            <div className="userId">userId &nbsp;</div>
-            <div className="verticalBar"></div>
-            <div className="createDay">&nbsp; 2021-05-11</div>
-          </div>
-          <h1>TitleTitleTitleTitleTitle</h1>
-          <p>
-            ContentContentContentContentContentContentContentContentContentContentContentContent
-          </p>
-        </article>
-
-        <article className="adsCard">
-          <div className="cardHeader">
-            <div className="sponserName">광고이름</div>
-          </div>
-          <div className="adsContent">
-            <div className="adsImg">
-              <img
-                alt="광고사진"
-                src="https://media.vlpt.us/images/playck/post/f04cee49-7383-4854-811e-ed5bc9525ef0/js.png"
-              />
+        {feedList.data?.map((feed, index) => {
+          return (
+            <div key={index}>
+              {(index + 1) % 4 === 0 ? (
+                <div>
+                  <article className="adsCard">
+                    <div className="cardHeader">
+                      <div className="sponserName">광고이름</div>
+                    </div>
+                    <div className="adsContent">
+                      <div className="adsImg">
+                        <img
+                          alt="광고사진"
+                          src="https://media.vlpt.us/images/playck/post/f04cee49-7383-4854-811e-ed5bc9525ef0/js.png"
+                        />
+                      </div>
+                      <div className="adsText">
+                        <h1>TitleTitleTitleTitleTitle</h1>
+                        <p>
+                          ContentContentContentContentContentContentContentContentContentContentContentContent
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              ) : (
+                <article className="feedCard">
+                  <div className="cardHeader">
+                    <div className="categoryName">{feed.id}</div>
+                    <div className="categoryId">{feed.category_id}</div>
+                  </div>
+                  <div className="underBar"></div>
+                  <div className="userContent">
+                    <div className="userId">{feed.user_id} &nbsp;</div>
+                    <div className="verticalBar"></div>
+                    <div className="createDay">
+                      &nbsp; {feed.created_at.slice(0, 10)}
+                    </div>
+                  </div>
+                  <h1>
+                    {feed.title.length > 150
+                      ? `${feed.title.slice(0, 150)}...`
+                      : feed.title}
+                  </h1>
+                  <p>
+                    {feed.contents.length > 250
+                      ? `${feed.contents.slice(0, 250)}...`
+                      : feed.contents}
+                  </p>
+                </article>
+              )}
             </div>
-            <div className="adsText">
-              <h1>TitleTitleTitleTitleTitle</h1>
-              <p>
-                ContentContentContentContentContentContentContentContentContentContentContentContent
-              </p>
-            </div>
-          </div>
-        </article>
+          );
+        })}
       </div>
       <Modal flg={flg} handleModal={handleModal} />
     </div>

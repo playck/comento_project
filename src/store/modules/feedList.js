@@ -4,7 +4,7 @@ import { SERVER } from "../../config";
 
 const getFeedListDataAPI = (page, ord, category, limit) =>
   axios.get(
-    `${SERVER}/api/list?page=${page}&limit=${limit}&ord=${ord}${category}`
+    `${SERVER}/api/list?page=${page}&limit=${limit}&ord=${ord}&category[]=${category}`
   );
 
 const GET_FEED_LIST_DATA = "GET_PRODUCT_LIST_DATA";
