@@ -1,15 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFeedListData } from "../../store/modules/feedList";
+import Modal from "./Components/Modal/Modal";
 import "./Feed.scss";
 
 const Feed = () => {
   const { feedList, loading } = useSelector((state) => state.feedList);
+  const [flg, setFlg] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getFeedListData());
   }, []);
+
+  const handleModal = () => {
+    setFlg(!flg);
+  };
 
   return (
     <div className="FeedMain">
@@ -22,7 +28,9 @@ const Feed = () => {
             <span className="active">∙ 오름차순 &nbsp;</span>
             <span>∙ 내림차순</span>
           </div>
-          <button className="filterBtn">필터</button>
+          <button className="filterBtn" onClick={handleModal}>
+            필터
+          </button>
         </div>
 
         <article className="feedCard">
@@ -62,6 +70,7 @@ const Feed = () => {
           </div>
         </article>
       </div>
+      <Modal flg={flg} handleModal={handleModal} />
     </div>
   );
 };
