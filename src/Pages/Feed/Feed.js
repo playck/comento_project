@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFeedListData } from "../../store/modules/feedList";
+import { getAdsListData, getFeedListData } from "../../store/modules/feedList";
 import Modal from "./Components/Modal/Modal";
 import "./Feed.scss";
 
 const Feed = () => {
   const { feedList, loading } = useSelector((state) => state.feedList);
+  const { adsList } = useSelector((state) => state.adsList || {});
   const [flg, setFlg] = useState(false);
-  const [data, setData] = useState("");
   const [arr, setArr] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getFeedListData(1, "asc", arr, 10));
+    dispatch(getAdsListData(1, 2));
   }, []);
 
   const handleModal = () => {
@@ -40,25 +41,29 @@ const Feed = () => {
             <div key={index}>
               {(index + 1) % 4 === 0 ? (
                 <div>
-                  <article className="adsCard">
-                    <div className="cardHeader">
-                      <div className="sponserName">광고이름</div>
-                    </div>
-                    <div className="adsContent">
-                      <div className="adsImg">
-                        <img
-                          alt="광고사진"
-                          src="https://media.vlpt.us/images/playck/post/f04cee49-7383-4854-811e-ed5bc9525ef0/js.png"
-                        />
-                      </div>
-                      <div className="adsText">
-                        <h1>TitleTitleTitleTitleTitle</h1>
-                        <p>
-                          ContentContentContentContentContentContentContentContentContentContentContentContent
-                        </p>
-                      </div>
-                    </div>
-                  </article>
+                  <div>
+                    {adsList.data?.map((ads, index) => {
+                      <article className="adsCard">
+                        <div className="cardHeader">
+                          <div className="sponserName">광고이름</div>
+                        </div>
+                        <div className="adsContent">
+                          <div className="adsImg">
+                            <img
+                              alt="광고사진"
+                              src="https://media.vlpt.us/images/playck/post/f04cee49-7383-4854-811e-ed5bc9525ef0/js.png"
+                            />
+                          </div>
+                          <div className="adsText">
+                            <h1>TitleTitleTitleTitleTitle</h1>
+                            <p>
+                              ContentContentContentContentContentContentContentContentContentContentContentContent
+                            </p>
+                          </div>
+                        </div>
+                      </article>;
+                    })}
+                  </div>
                 </div>
               ) : (
                 <article className="feedCard">
