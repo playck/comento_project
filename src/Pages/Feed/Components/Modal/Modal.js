@@ -1,27 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Modal.scss";
 
 const Modal = ({ flg, handleModal }) => {
+  const checkDataArr = [
+    {
+      id: 1,
+      type: "카테고리1",
+      isChecked: false,
+    },
+    {
+      id: 2,
+      type: "카테고리2",
+      isChecked: false,
+    },
+    {
+      id: 3,
+      type: "카테고리3",
+      isChecked: false,
+    },
+  ];
+
+  const [checkList, setCheckList] = useState(checkDataArr);
+  const [checkItemNum, setCheckItemNum] = useState([]);
+
   const saveFilterData = () => {
     handleModal();
+    getCheckeddFilterData();
+  };
+
+  const onInputValueChange = (selectId) => {
+    const updatedChecked = checkList.map((item) =>
+      item.id === selectId ? { ...item, isChecked: !item.isChecked } : item
+    );
+    setCheckList(updatedChecked);
+  };
+
+  const getCheckeddFilterData = () => {
+    let result = [];
+
+    const updatedCheckedItem = checkList.filter(
+      (item) => item.isChecked === true
+    );
+
+    for (let i = 0; i < updatedCheckedItem.length; i++) {
+      result.push(updatedCheckedItem[i].id);
+    }
+    setCheckItemNum(result);
   };
 
   return (
     <div className={`Modal ${flg && "on"}`}>
       <h2>필터</h2>
       <div className="checkList">
-        <div>
-          <input type="checkbox" checked />
-          <span>카테고리1</span>
-        </div>
-        <div>
-          <input type="checkbox" checked />
-          <span>카테고리2</span>
-        </div>
-        <div>
-          <input type="checkbox" checked />
-          <span>카테고리3</span>
-        </div>
+        {checkDataArr.map((data) => {
+          return (
+            <div className="checkFilter" key={data.id}>
+              <input
+                id={data.id}
+                value={data.type}
+                type="checkbox"
+                onChange={() => onInputValueChange(data.id)}
+              />
+              <span>{data.type}</span>
+            </div>
+          );
+        })}
       </div>
       <div className="closeBtn">
         <img

@@ -40,7 +40,7 @@ const Feed = () => {
             <div key={index}>
               {(index + 1) % 4 === 0 ? (
                 <div>
-                  <div>
+                  {/* <div>
                     {adsList.data?.map((ads, index) => {
                       <article className="adsCard">
                         <div className="cardHeader">
@@ -62,7 +62,7 @@ const Feed = () => {
                         </div>
                       </article>;
                     })}
-                  </div>
+                  </div> */}
                 </div>
               ) : (
                 <article className="feedCard">
@@ -94,6 +94,7 @@ const Feed = () => {
           );
         })}
       </div>
+      <div className={`Modals ${flg && "on"}`}></div>
       <Modal flg={flg} handleModal={handleModal} />
     </div>
   );
