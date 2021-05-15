@@ -12,7 +12,7 @@ const Feed = () => {
   const [flg, setFlg] = useState(false);
   const [page, setPage] = useState(1);
   const [ord, setOrd] = useState("asc");
-  const [arr, setArr] = useState(1);
+  const [arr, setArr] = useState("&category[]=1&category[]=2&category[]=3");
   const [limit, setLimit] = useState(10);
   const dispatch = useDispatch();
 
@@ -20,7 +20,7 @@ const Feed = () => {
     dispatch(getFeedListData(page, ord, arr, limit));
     dispatch(getAdsListData(page, 1));
     window.addEventListener("scroll", infiniteScroll, true);
-  }, [ord, limit]);
+  }, [ord, arr, limit]);
 
   const handleModal = () => {
     setFlg(!flg);
@@ -32,6 +32,10 @@ const Feed = () => {
     } else {
       setOrd("asc");
     }
+  };
+
+  const handleFeedfilter = (data) => {
+    setArr(data);
   };
 
   const infiniteScroll = () => {
@@ -144,7 +148,11 @@ const Feed = () => {
         })}
       </div>
       <div className={`Modals ${flg && "on"}`}></div>
-      <Modal flg={flg} handleModal={handleModal} />
+      <Modal
+        flg={flg}
+        handleModal={handleModal}
+        handleFeedfilter={handleFeedfilter}
+      />
     </div>
   );
 };

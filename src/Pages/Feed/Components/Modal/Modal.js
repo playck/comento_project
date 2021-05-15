@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./Modal.scss";
 
-const Modal = ({ flg, handleModal }) => {
-  const checkDataArr = [
-    {
-      id: 1,
-      type: "카테고리1",
-      isChecked: false,
-    },
-    {
-      id: 2,
-      type: "카테고리2",
-      isChecked: false,
-    },
-    {
-      id: 3,
-      type: "카테고리3",
-      isChecked: false,
-    },
-  ];
-
+const Modal = ({ flg, handleModal, handleFeedfilter }) => {
   const [checkList, setCheckList] = useState(checkDataArr);
-  const [checkItemNum, setCheckItemNum] = useState([]);
+  const [checkItemNum, setCheckItemNum] = useState([1, 2, 3]);
+
+  useEffect(() => {
+    let categoryArr = "";
+
+    if (checkItemNum.length === 0) {
+      alert("카테고리를 1개 이상 선택해주세요");
+      handleModal();
+    }
+
+    for (let i = 0; i < checkItemNum.length; i++) {
+      categoryArr += `&category[]=${checkItemNum[i]}`;
+    }
+
+    handleFeedfilter(categoryArr);
+  }, [checkItemNum]);
 
   const saveFilterData = () => {
     handleModal();
@@ -60,13 +57,14 @@ const Modal = ({ flg, handleModal }) => {
                 value={data.type}
                 type="checkbox"
                 onChange={() => onInputValueChange(data.id)}
+                defaultChecked={true}
               />
               <span>{data.type}</span>
             </div>
           );
         })}
       </div>
-      <div className="closeBtn">
+      <div className="closeBtn" onClick={() => handleModal()}>
         <img
           alt="x"
           src="https://images.velog.io/images/playck/post/a52fda84-84ee-4b59-a65d-7778eecc61ab/%EA%B7%B8%EB%A3%B9%20560.svg"
@@ -80,3 +78,21 @@ const Modal = ({ flg, handleModal }) => {
 };
 
 export default Modal;
+
+const checkDataArr = [
+  {
+    id: 1,
+    type: "apple",
+    isChecked: true,
+  },
+  {
+    id: 2,
+    type: "banana",
+    isChecked: true,
+  },
+  {
+    id: 3,
+    type: "coconut",
+    isChecked: true,
+  },
+];
