@@ -19,7 +19,8 @@ const Feed = () => {
   useEffect(() => {
     dispatch(getFeedListData(page, ord, arr, limit));
     dispatch(getAdsListData(page, 1));
-  }, [ord]);
+    window.addEventListener("scroll", infiniteScroll, true);
+  }, [ord, limit]);
 
   const handleModal = () => {
     setFlg(!flg);
@@ -30,6 +31,26 @@ const Feed = () => {
       setOrd("desc");
     } else {
       setOrd("asc");
+    }
+  };
+
+  const infiniteScroll = () => {
+    let scrollHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    let scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+    let clientHeight = document.documentElement.clientHeight;
+
+    if (limit < 30) {
+      if (scrollTop + clientHeight >= scrollHeight) {
+        setLimit(limit + 10);
+      }
+    } else {
+      return;
     }
   };
 
