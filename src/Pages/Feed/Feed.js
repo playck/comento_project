@@ -1,24 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAdsListData, getFeedListData } from "../../store/modules/feedList";
+import { getFeedListData } from "../../store/modules/feedList";
+import { getAdsListData } from "../../store/modules/adsList";
 import Aside from "./Components/Aside/Aside";
 import Modal from "./Components/Modal/Modal";
 import "./Feed.scss";
 
 const Feed = () => {
   const { feedList, loading } = useSelector((state) => state.feedList);
-  const { adsList } = useSelector((state) => state.adsList || {});
+  const { adsList } = useSelector((state) => state.adsList);
   const [flg, setFlg] = useState(false);
+  const [page, setPage] = useState(1);
+  const [ord, setOrd] = useState("asc");
   const [arr, setArr] = useState(1);
+  const [limit, setLimit] = useState(10);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getFeedListData(1, "asc", arr, 10));
-    dispatch(getAdsListData(1, 2));
-  }, []);
+    dispatch(getFeedListData(page, ord, arr, limit));
+    dispatch(getAdsListData(page, 1));
+  }, [ord]);
 
   const handleModal = () => {
     setFlg(!flg);
+  };
+
+  const handleFeedOrd = () => {
+    if (ord === "asc") {
+      setOrd("desc");
+    } else {
+      setOrd("asc");
+    }
   };
 
   return (
@@ -27,8 +39,18 @@ const Feed = () => {
       <div className="Feed">
         <div className="orderBtn">
           <div>
-            <span className="active">∙ 오름차순 &nbsp;</span>
-            <span>∙ 내림차순</span>
+            <span
+              className={ord === "asc" ? "ordActive" : ""}
+              onClick={handleFeedOrd}
+            >
+              ∙ 오름차순 &nbsp;
+            </span>
+            <span
+              className={ord === "desc" ? "ordActive" : ""}
+              onClick={handleFeedOrd}
+            >
+              ∙ 내림차순
+            </span>
           </div>
           <button className="filterBtn" onClick={handleModal}>
             필터
@@ -40,29 +62,35 @@ const Feed = () => {
             <div key={index}>
               {(index + 1) % 4 === 0 ? (
                 <div>
-                  {/* <div>
-                    {adsList.data?.map((ads, index) => {
-                      <article className="adsCard">
+                  {adsList.data.map((ads, id) => {
+                    return (
+                      <article className="adsCard" key={id}>
                         <div className="cardHeader">
-                          <div className="sponserName">광고이름</div>
+                          <div className="sponserName">sponsored</div>
                         </div>
                         <div className="adsContent">
                           <div className="adsImg">
                             <img
                               alt="광고사진"
-                              src="https://media.vlpt.us/images/playck/post/f04cee49-7383-4854-811e-ed5bc9525ef0/js.png"
+                              src={`https://cdn.comento.kr/assignment/${ads.img}`}
                             />
                           </div>
                           <div className="adsText">
-                            <h1>TitleTitleTitleTitleTitle</h1>
+                            <h1>
+                              {ads.title.length > 50
+                                ? `${ads.title.slice(0, 50)}...`
+                                : ads.title}
+                            </h1>
                             <p>
-                              ContentContentContentContentContentContentContentContentContentContentContentContent
+                              {ads.contents.length > 150
+                                ? `${ads.contents.slice(0, 150)}...`
+                                : ads.contents}
                             </p>
                           </div>
                         </div>
-                      </article>;
-                    })}
-                  </div> */}
+                      </article>
+                    );
+                  })}
                 </div>
               ) : (
                 <article className="feedCard">

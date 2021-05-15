@@ -21,7 +21,7 @@
         cursor: pointer;
       }
 
-      .active {
+      .ordActive {
         color: $themeColor;
       }
     }
@@ -91,7 +91,6 @@
       padding: 24px 30px;
       width: 70vw;
       max-width: 865px;
-      height: 255px;
       background: #ffffff 0% 0% no-repeat padding-box;
       border: 1px solid #e1e4e7;
       border-radius: 5px;
@@ -127,7 +126,6 @@
           }
 
           p {
-            height: 24px;
             word-wrap: break-word;
           }
         }
