@@ -26,12 +26,12 @@ const Feed = () => {
     setFlg(!flg);
   };
 
-  const handleFeedOrd = () => {
-    if (ord === "asc") {
-      setOrd("desc");
-    } else {
-      setOrd("asc");
-    }
+  const handleFeedAscOrd = () => {
+    setOrd("asc");
+  };
+
+  const handleFeedDescOrd = () => {
+    setOrd("desc");
   };
 
   const handleFeedfilter = (data) => {
@@ -49,12 +49,8 @@ const Feed = () => {
     );
     let clientHeight = document.documentElement.clientHeight;
 
-    if (limit < 30) {
-      if (scrollTop + clientHeight >= scrollHeight) {
-        setLimit(limit + 10);
-      }
-    } else {
-      return;
+    if (scrollTop + clientHeight >= scrollHeight) {
+      setLimit(limit + 10);
     }
   };
 
@@ -66,13 +62,13 @@ const Feed = () => {
           <div>
             <span
               className={ord === "asc" ? "ordActive" : ""}
-              onClick={handleFeedOrd}
+              onClick={handleFeedAscOrd}
             >
               ∙ 오름차순 &nbsp;
             </span>
             <span
               className={ord === "desc" ? "ordActive" : ""}
-              onClick={handleFeedOrd}
+              onClick={handleFeedDescOrd}
             >
               ∙ 내림차순
             </span>
