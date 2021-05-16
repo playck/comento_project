@@ -1,0 +1,70 @@
+@import "../../styles/common.scss";
+
+.detail {
+  .feedCard {
+    margin: 0 auto;
+    margin-bottom: 28px;
+    padding: 24px 30px;
+    width: 80vw;
+    max-width: 1024px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid $themeColor;
+    border-radius: 5px;
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 13px;
+    }
+
+    .createDay {
+      font-size: 13px;
+    }
+  }
+
+  .answerInfo {
+    margin: 0 auto;
+    margin-bottom: 28px;
+    width: 80vw;
+    max-width: 1024px;
+
+    span {
+      color: $themeColor;
+    }
+  }
+
+  .answerCard {
+    margin: 0 auto;
+    margin-bottom: 28px;
+    padding: 24px 30px;
+    width: 80vw;
+    max-width: 1024px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid $themeColor;
+    border-radius: 5px;
+
+    h2 {
+      color: #7e848a;
+    }
+
+    .underBar {
+      margin: 8px 0 12px;
+      width: 75vw;
+      max-width: 1024px;
+      height: 1px;
+      background: #e1e4e7 0% 0% no-repeat padding-box;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    .createDay {
+      font-size: 13px;
+      color: #adb5bd;
+    }
+  }
+}
