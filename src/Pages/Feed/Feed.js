@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFeedListData } from "../../store/modules/feedList";
 import { getAdsListData } from "../../store/modules/adsList";
+import { useHistory } from "react-router-dom";
 import Aside from "./Components/Aside/Aside";
 import Modal from "./Components/Modal/Modal";
 import "./Feed.scss";
@@ -15,6 +16,7 @@ const Feed = () => {
   const [arr, setArr] = useState("&category[]=1&category[]=2&category[]=3");
   const [limit, setLimit] = useState(10);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getFeedListData(page, ord, arr, limit));
@@ -36,6 +38,10 @@ const Feed = () => {
 
   const handleFeedfilter = (data) => {
     setArr(data);
+  };
+
+  const gotoFeedDetail = (id) => {
+    history.push(`/${id}`);
   };
 
   const infiniteScroll = () => {
@@ -114,7 +120,10 @@ const Feed = () => {
                   })}
                 </div>
               ) : (
-                <article className="feedCard">
+                <article
+                  className="feedCard"
+                  onClick={() => gotoFeedDetail(feed.id)}
+                >
                   <div className="cardHeader">
                     <div className="categoryName">{feed.id}</div>
                     <div className="categoryId">{feed.category_id}</div>

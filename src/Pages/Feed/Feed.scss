@@ -45,6 +45,9 @@
       background: #ffffff 0% 0% no-repeat padding-box;
       border: 1px solid #e1e4e7;
       border-radius: 5px;
+      &:hover {
+        border-color: $themeColor;
+      }
 
       .cardHeader {
         display: flex;
