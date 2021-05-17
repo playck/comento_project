@@ -1,6 +1,9 @@
 @import "../../styles/common.scss";
 
 .detail {
+  padding-top: 50px;
+  background-color: #ffffff;
+
   .feedCard {
     margin: 0 auto;
     margin-bottom: 28px;
@@ -58,12 +61,56 @@
     }
 
     p {
+      margin-top: 8px;
       margin-bottom: 12px;
     }
 
     .createDay {
       font-size: 13px;
       color: #adb5bd;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .detail {
+    padding-top: 10px;
+
+    .answerCard {
+      .underBar {
+        width: 72vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .detail {
+    .feedCard {
+      padding: 24px 0 24px;
+      width: 90%;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+
+    .answerInfo {
+      margin: 0;
+      margin-left: 18px;
+      margin-bottom: 14px;
+    }
+
+    .answerCard {
+      padding: 24px 0 24px;
+      width: 90%;
+      border-color: #e1e4e7;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+
+      .underBar {
+        width: 100%;
+      }
     }
   }
 }

@@ -4,7 +4,7 @@ import "./Navbar.scss";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div>[제출일] 이름을 작성해 주세요</div>
+      <div>[2021-05-18] 김종진</div>
     </nav>
   );
 };
