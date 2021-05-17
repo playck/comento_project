@@ -1,16 +1,25 @@
 @import "../../styles/common.scss";
 
 .navbar {
+  margin-bottom: 1px;
   width: 100%;
-  margin-bottom: 70px;
-  height: 70px;
   background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 1px 5px #00000012;
 
   div {
     margin: 0 auto;
     padding: 23px 40px;
     width: 100%;
     max-width: 1200px;
+    box-shadow: 0px 1px 5px #00000012;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .navbar {
+    margin-bottom: 1px;
+
+    div {
+      padding: 11px 20px;
+    }
   }
 }

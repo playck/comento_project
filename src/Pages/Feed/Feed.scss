@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  padding-left: 20px;
+  padding: 50px 20px 0;
   width: 100%;
   max-width: 1024px;
 
@@ -14,6 +14,7 @@
     .orderBtn {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       width: 100%;
       max-width: 865px;
       margin: 0 0 10px 0;
@@ -143,5 +144,78 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .FeedMain {
+    .Feed {
+      .feedCard {
+        .underBar {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .FeedMain {
+    padding: 0;
+
+    .Feed {
+      .orderBtn {
+        margin: 8px 0;
+        padding: 0 10px;
+      }
+
+      .feedCard {
+        margin-bottom: 14px;
+        width: 100%;
+        border-radius: 0;
+
+        .underBar {
+          width: 100%;
+        }
+
+        h1 {
+          height: 35px;
+          overflow: hidden;
+        }
+
+        p {
+          height: 45px;
+          overflow: hidden;
+        }
+      }
+
+      .adsCard {
+        width: 100%;
+        margin-bottom: 14px;
+        border-radius: 0;
+
+        .adsContent {
+          flex-direction: column;
+
+          .adsImg {
+            margin: 0;
+          }
+
+          .adsText {
+            width: 100%;
+
+            h1 {
+              height: 35px;
+              overflow: hidden;
+            }
+
+            p {
+              height: 45px;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+    }
   }
 }

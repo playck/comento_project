@@ -14,3 +14,11 @@ aside {
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 425px) {
+  aside {
+    .loginBtn {
+      display: none;
+    }
+  }
+}

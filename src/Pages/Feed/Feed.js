@@ -125,8 +125,14 @@ const Feed = () => {
                   onClick={() => gotoFeedDetail(feed.id)}
                 >
                   <div className="cardHeader">
-                    <div className="categoryName">{feed.id}</div>
-                    <div className="categoryId">{feed.category_id}</div>
+                    <div className="categoryName">
+                      <span>NO. </span>
+                      {feed.id}
+                    </div>
+                    <div className="categoryId">
+                      <span>Categoty_NO. </span>
+                      {feed.category_id}
+                    </div>
                   </div>
                   <div className="underBar"></div>
                   <div className="userContent">
